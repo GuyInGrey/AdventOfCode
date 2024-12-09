@@ -4,11 +4,12 @@ namespace AdventOfCode;
 
 internal class Program
 {
-    static void Main(/*string[] args*/)
+    static void Main(string[] args)
     {
         Console.WriteLine("Hello, World!");
 
         var solutions = new AdventSolutions();
-        solutions.GetDay(2024, 8).Benchmark();
+        var day = solutions.GetDay(2024, 08);
+        day.Benchmark();
     }
 }
