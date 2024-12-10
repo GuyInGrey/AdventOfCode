@@ -11,7 +11,7 @@ internal class Program
             var days = new AdventSolutions();
 
             var i = 0;
-            Console.WriteLine("Select a day, 'all' to benchmark all, or Control+C to exit:");
+            Console.WriteLine("Select a day, 'all' to benchmark all, empty for latest, or Control+C to exit:");
             foreach (var day in days)
             {
                 Console.ForegroundColor = i % 2 == 0 ? ConsoleColor.Red : ConsoleColor.Green;
@@ -26,13 +26,24 @@ internal class Program
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
 
+            
+
             if (input == "all")
             {
                 days.BenchmarkAll();
                 continue;
             }
 
-            var selected = days.FirstOrDefault(d => input == $"{d.Year}-{d.Day}");
+            AdventBase? selected;
+            if (input == "")
+            {
+                selected = days.GetMostRecentDay();
+            }
+            else
+            {
+                selected = days.FirstOrDefault(d => input == $"{d.Year}-{d.Day}");
+            }
+
             if (selected is null)
             {
                 Console.WriteLine("Your argument is invalid.");

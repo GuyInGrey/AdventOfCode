@@ -46,29 +46,6 @@ public class Day04 : AdventBase
         return count;
     }
 
-    //[Executable(4, "4.2.1")]
-    //public static object Part2_1(string input)
-    //{
-    //    input = input.Trim();
-    //    var arr = input.Split('\n').Select(line => line.ToCharArray()).ToArray();
-
-    //    var count = 0;
-    //    for (var y = 1; y < arr.Length - 1; y++)
-    //    {
-    //        for (var x = 1; x < arr[y].Length - 1; x++)
-    //        {
-    //            var w1 = arr[y - 1][x - 1].ToString() + arr[y][x] + arr[y + 1][x + 1];
-    //            var w2 = arr[y - 1][x + 1].ToString() + arr[y][x] + arr[y + 1][x - 1];
-    //            if ((w1 == "MAS" || w1 == "SAM") && (w2 == "MAS" || w2 == "SAM"))
-    //            {
-    //                count++;
-    //            }
-    //        }
-    //    }
-
-    //    return count;
-    //}
-
     protected override object InternalPart2()
     {
         var chars = Input.Bytes;

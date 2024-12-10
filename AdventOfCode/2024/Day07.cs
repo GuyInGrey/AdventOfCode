@@ -40,46 +40,6 @@ public class Day07 : AdventBase
 
         return v1 || v2;
     }
-
-    //public static object Part2_1(string input)
-    //{
-    //    var lines = input.Trim().Split('\n');
-
-    //    var eqs = new List<(long, List<long>)>();
-    //    foreach (var line in lines)
-    //    {
-    //        eqs.Add((long.Parse(line.Split(':')[0]), line.Split(':')[1].Trim().Split(' ').Select(long.Parse).ToList()));
-    //    }
-
-    //    long works = 0;
-
-    //    foreach (var eq in eqs)
-    //    {
-    //        works += SearchRecurse2(eq.Item2, eq.Item1, []) ? eq.Item1 : 0;
-    //    }
-
-    //    return works;
-    //}
-
-    //private static bool SearchRecurse2(List<long> vals, long total, List<int> ops)
-    //{
-    //    if (ops.Count == vals.Count - 1)
-    //    {
-    //        long res = vals[0];
-    //        for (var i = 1; i < vals.Count; i++)
-    //        {
-    //            res = ops[i - 1] == 0 ? res + vals[i] : ops[i - 1] == 1 ? res * vals[i] : long.Parse(res.ToString() + vals[i].ToString());
-    //        }
-    //        return res == total;
-    //    }
-
-    //    var v1 = SearchRecurse2(vals, total, ops.Concat([0]).ToList());
-    //    var v2 = SearchRecurse2(vals, total, ops.Concat([1]).ToList());
-    //    var v3 = SearchRecurse2(vals, total, ops.Concat([2]).ToList());
-
-    //    return v1 || v2 || v3;
-    //}
-
     protected override object InternalPart2()
     {
         var totals = new List<long>(1000);
