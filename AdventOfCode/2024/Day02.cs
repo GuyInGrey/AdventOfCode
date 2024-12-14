@@ -1,6 +1,6 @@
 ﻿using AdventOfCodeSupport;
 
-namespace AdventOfCode2024._2024;
+namespace AdventOfCode._2024;
 public class Day02 : AdventBase
 {
     //[Executable(2, "2.1.1")]

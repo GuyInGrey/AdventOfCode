@@ -1,6 +1,6 @@
 ﻿//using AdventOfCodeSupport;
 
-//namespace AdventOfCode2024._2024;
+//namespace AdventOfCode._2024;
 //public class Day00 : AdventBase
 //{
 //    protected override object InternalPart1()

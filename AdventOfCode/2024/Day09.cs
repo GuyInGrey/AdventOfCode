@@ -1,6 +1,6 @@
 ﻿using AdventOfCodeSupport;
 
-namespace AdventOfCode2024._2024;
+namespace AdventOfCode._2024;
 public class Day09 : AdventBase
 {
     protected override object InternalPart1()
@@ -52,22 +52,74 @@ public class Day09 : AdventBase
 
     protected override object InternalPart2()
     {
-        var drive = new int[Input.Text.Length * 10];
+        //var lastFileIndex = Input.Bytes.Length - 1 - ((Input.Bytes.Length + 1) % 2);
 
-        var fileId = 0;
-        for (var i = 0; i < Input.Bytes.Length; i++)
-        {
-            var num = Input.Bytes[i] - '0';
-            for (var j = 0; j < num; j++)
-            {
-                drive.Add(i % 2 == 0 ? fileId : -1);
-            }
-            if (i % 2 == 0)
-            {
-                fileSizes.Add(fileId, num);
-                fileId++;
-            }
-        }
+        //var drive = new int[Input.Bytes.Length * 10];
+        //var driveWriteHead = 0;
+
+        //var fileId = 0;
+
+        //var moved = new bool[(Input.Bytes.Length + (Input.Bytes.Length % 2)) / 2];
+
+        //var requiredFileSize = 1;
+        //for (var i = 0; i < Input.Bytes.Length; i++)
+        //{
+        //    if (i % 2 == 0 && moved[fileId])
+        //    {
+        //        continue;
+        //    }
+
+        //    var num = Input.Bytes[i] - '0';
+
+        //    if (i % 2 == 0)
+        //    {
+        //        for (var j = 0; j < num; j++)
+        //        {
+        //            drive[driveWriteHead] = fileId + 1;
+        //            driveWriteHead++;
+        //        }
+        //        fileId++;
+        //    }
+        //    else
+        //    {
+        //        if (num < requiredFileSize)
+        //        {
+        //            driveWriteHead += num;
+        //            continue;
+        //        }
+
+        //        for (var k = lastFileIndex; k > i && num > 0; k -= 2)
+        //        {
+        //            var fileSize = Input.Bytes[k] - '0';
+        //            var laterFileId = k / 2;
+
+        //            if (moved[laterFileId])
+        //            {
+        //                continue;
+        //            }
+
+        //            if (fileSize <= num)
+        //            {
+        //                moved[laterFileId] = true;
+        //                for (var m = 0; m < fileSize; m++)
+        //                {
+        //                    drive[driveWriteHead] = laterFileId + 1;
+        //                    driveWriteHead++;
+        //                }
+        //                num -= fileSize;
+        //            }
+        //        }
+
+        //        if (num > 0)
+        //        {
+        //            requiredFileSize = num + 1;
+        //        }
+
+        //        driveWriteHead += num;
+        //    }
+        //}
+
+
 
         return 0;
     }

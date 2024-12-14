@@ -2,7 +2,7 @@
 
 using System.Text.RegularExpressions;
 
-namespace AdventOfCode2024._2024;
+namespace AdventOfCode._2024;
 public class Day03 : AdventBase
 {
     //[Executable(3, "3.1.1")]
