@@ -1,5 +1,7 @@
 ﻿using AdventOfCodeSupport;
 
+using MathNet.Numerics.LinearAlgebra;
+
 namespace AdventOfCode._2024;
 public class Day13 : AdventBase
 {
@@ -29,35 +31,32 @@ public class Day13 : AdventBase
 
     protected override object InternalPart2()
     {
-        const long add = 10000000000000;
+        const long add = 0;
 
         long cost = 0;
-        Parallel.ForEach(Input.Blocks, new ParallelOptions()
+        foreach (var machineText in Input.Blocks)
         {
-            MaxDegreeOfParallelism = 320,
-        }, machineText =>
-        {
-            var aX = long.Parse(machineText.Lines[0].Split('X')[1].Split(',')[0].Substring(1));
-            var aY = long.Parse(machineText.Lines[0].Split('Y')[1].Substring(1));
-            var bX = long.Parse(machineText.Lines[1].Split('X')[1].Split(',')[0].Substring(1));
-            var bY = long.Parse(machineText.Lines[1].Split('Y')[1].Substring(1));
-            var pX = long.Parse(machineText.Lines[2].Split('X')[1].Split(',')[0].Substring(1)) + add;
-            var pY = long.Parse(machineText.Lines[2].Split('Y')[1].Substring(1)) + add;
+            var aX = double.Parse(machineText.Lines[0].Split('X')[1].Split(',')[0].Substring(1));
+            var aY = double.Parse(machineText.Lines[0].Split('Y')[1].Substring(1));
+            var bX = double.Parse(machineText.Lines[1].Split('X')[1].Split(',')[0].Substring(1));
+            var bY = double.Parse(machineText.Lines[1].Split('Y')[1].Substring(1));
+            var pX = double.Parse(machineText.Lines[2].Split('X')[1].Split(',')[0].Substring(1)) + add;
+            var pY = double.Parse(machineText.Lines[2].Split('Y')[1].Substring(1)) + add;
 
-            for (long aP = 0; aP * aX <= pX; aP++)
+            var A = Matrix<double>.Build.Dense(2, 2, [ aX, aY, bX, bY ]);
+            var B = Matrix<double>.Build.Dense(2, 1, [ pX, pY ]);
+
+            var aInverse = A.Inverse();
+            var X = aInverse * B;
+
+            var aP = Math.Round(X[0, 0]);
+            var bP = Math.Round(X[1, 0]);
+
+            if ((aP * aX) + (bP * bX) == pX && (aP * aY) + (bP * bY) == pY)
             {
-                var bP = ((pX - (aP * aX)) / bX);
-                if ((pX - (aP * aX) - (bP * bX)) == 0 && (pY - (aP * aY) - (bP * bY)) == 0)
-                {
-                    var added = (aP * 3) + ((pX - (aP * aX)) / bX);
-                    cost += added;
-                    Console.WriteLine($"Found solution: {added} -> {cost}");
-                    return;
-                }
+                cost += ((long)aP * 3) + (long)bP;
             }
-
-            Console.WriteLine($"No solution: {cost}");
-        });
+        };
         return cost;
     }
 }
