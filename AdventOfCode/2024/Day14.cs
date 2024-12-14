@@ -120,7 +120,7 @@ public class Day14 : AdventBase
                         length++;
                     }
 
-                    if (length > 20)
+                    if (length > 10)
                     {
                         
                         var s = new char[roomHeight * (roomWidth + 1)];
